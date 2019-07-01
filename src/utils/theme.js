@@ -17,6 +17,7 @@ export const StyledLink = styled(Link)`
 `;
 
 export const Tagline = styled.h1`
+    line-height: 1.3;
     font-weight: 900;
     color: ${colors.darkColor};
-`
+`;
