@@ -42,6 +42,26 @@ const Subline = styled.h3`
   }
 `;
 
+const SecondaryContainer = styled.div`
+  background-color: ${theme.colors.darkColor};
+`;
+
+const SecondLandingHeader = styled(theme.Header)`
+  color: ${theme.colors.lightColor};
+  line-height: 1.5;
+  padding: 15vw;
+  font-size: 5vw;
+  @media only screen and (min-width: 450px) {
+    font-size: 4vw;
+  }
+  @media only screen and (min-width: 900px) {
+    font-size: calc(12px + 2vw);
+  }
+  @media only screen and (min-width: 1200px) {
+    padding: 10vw;
+  }
+`;
+
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
@@ -50,6 +70,9 @@ const IndexPage = () => (
       <TitleTagline>We build experiences that last.</TitleTagline>
       <Subline>Take your business to the next level and gain an advantage in the digital world.</Subline>
     </LandingContainer>
+    <SecondaryContainer>
+      <SecondLandingHeader>We design & develop custom solutions for you.</SecondLandingHeader>
+    </SecondaryContainer>
   </Layout>
 )
 

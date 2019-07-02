@@ -21,3 +21,7 @@ export const Tagline = styled.h1`
     font-weight: 900;
     color: ${colors.darkColor};
 `;
+
+export const Header = styled.h2`
+    font-weight: 900;
+`;
