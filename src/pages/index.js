@@ -61,7 +61,7 @@ const ButtonsContainer = styled.div`
 `;
 
 const ContactContainer = styled.div`
-  
+
 `;
 
 const IndexPage = () => (
@@ -81,7 +81,7 @@ const IndexPage = () => (
       </ButtonsContainer>
     </SecondaryContainer>
     <ContactContainer>
-
+      
     </ContactContainer>
   </Layout>
 )
