@@ -22,6 +22,29 @@ export const Tagline = styled.h1`
     color: ${colors.darkColor};
 `;
 
-export const Header = styled.h2`
+export const ResponsiveHeader = styled.h2`
     font-weight: 900;
+    font-size: 5vw;
+    @media only screen and (min-width: 450px) {
+        font-size: 4vw;
+    }
+    @media only screen and (min-width: 900px) {
+        font-size: calc(12px + 2vw);
+    }
+`;
+
+export const ResponsiveText = styled.span`
+    font-size: 4vw;
+    @media only screen and (min-width: 450px) {
+        font-size: 2.75vw;
+    }
+    @media only screen and (min-width: 600px) {
+        font-size: 2.25vw;
+    }
+    @media only screen and (min-width: 900px) {
+        font-size: 1.75vw;
+    }
+    @media only screen and (min-width: 1280px) {
+        font-size: 1.5vw;
+    }
 `;

@@ -6,10 +6,10 @@ import SEO from "../components/seo"
 import Logo from "../components/logo";
 import { Tagline } from "../utils/theme";
 import * as theme from "../utils/theme";
+import LabelButton from "../components/custom/LabelButton";
 
 const LandingContainer = styled.div`
   height: 100vh;
-  width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -44,22 +44,24 @@ const Subline = styled.h3`
 
 const SecondaryContainer = styled.div`
   background-color: ${theme.colors.darkColor};
+  padding: 10vw 15vw;
+  @media only screen and (min-width: 1200px) {
+    padding: 6vw 10vw;
+  }
 `;
 
-const SecondLandingHeader = styled(theme.Header)`
+const SecondLandingHeader = styled(theme.ResponsiveHeader)`
   color: ${theme.colors.lightColor};
   line-height: 1.5;
-  padding: 15vw;
-  font-size: 5vw;
-  @media only screen and (min-width: 450px) {
-    font-size: 4vw;
-  }
-  @media only screen and (min-width: 900px) {
-    font-size: calc(12px + 2vw);
-  }
-  @media only screen and (min-width: 1200px) {
-    padding: 10vw;
-  }
+`;
+
+const ButtonsContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`;
+
+const ContactContainer = styled.div`
+  
 `;
 
 const IndexPage = () => (
@@ -72,7 +74,15 @@ const IndexPage = () => (
     </LandingContainer>
     <SecondaryContainer>
       <SecondLandingHeader>We design & develop custom solutions for you.</SecondLandingHeader>
+      <ButtonsContainer>
+        <LabelButton text="Websites" margin={"2vw 2vw 0 0"}/>
+        <LabelButton text="Mobile Apps" margin={"2vw 2vw 0 0"}/>
+        <LabelButton text="Software Development" margin={"2vw 2vw 0 0"}/>
+      </ButtonsContainer>
     </SecondaryContainer>
+    <ContactContainer>
+
+    </ContactContainer>
   </Layout>
 )
 
