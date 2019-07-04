@@ -7,39 +7,39 @@ import { useStaticQuery, graphql, Link } from "gatsby"
 import * as theme from "../utils/theme";
 
 const switchNavWidth = 750;
-const condenseValue = 100;
+const condenseValue = 50;
 
 const Nav = styled.nav`
   position: fixed;
   display: grid;
   grid-template-rows: auto auto;
   grid-auto-columns: auto;
-  grid-row-gap: 3vw;
+  grid-row-gap: 5vw;
   top: 0;
   width: 100vw;
   left: 0;
-  padding: 7vw 0 2vw;
+  padding: 7vw 5vw 2vw;
   align-items: center;
   justify-items: space-evenly;
+  box-shadow: 0 2px 18px 0 rgba(0,0,0,0);
   background-color: ${props => props.condensednav ? theme.colors.tintColor : "transparent"};
   ${props => props.condensednav && `
     transform: translateY(-50%);
+    box-shadow: 0 2px 18px 0 rgba(0,0,0,0.4);
   `};
   transition: all 0.2s ease;
 
   @media only screen and (min-width: ${switchNavWidth}px) {
-    left: initial;
-    top: 0;
-    right: 0;
-    width: 0;
-    padding: 0;
     border-radius: none;
-    background-color: initial;
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    margin: 3vw 3vw 0 0;
-    box-shadow: initial;
+    align-items: center;
+    padding: 5vw 15vw 0;
+    ${props => props.condensednav && `
+      transform: translateY(-40%);
+  `};
+  }
+  @media only screen and (min-width: 1200px) {
+    padding: 3vw 10vw 0;
   }
 `;
 
@@ -49,14 +49,14 @@ const CustomLink = styled(theme.StyledLink)`
   grid-row: 2/3;
   color: ${props => props.condensednav ? theme.colors.lightColor : theme.colors.darkColor};
   @media only screen and (min-width: ${switchNavWidth}px) {
-    margin: 0 0 2vw;
+    margin: 0 2vw 0 0;
   }
 `;
 
 const Logo = styled(Img)`
   cursor: pointer;
   transition: all 0.2s ease;
-  width: 15vw;
+  width: 12vw;
   &:hover {
     opacity: 0.5;
   }
@@ -65,9 +65,11 @@ const Logo = styled(Img)`
     
   }
   @media only screen and (min-width: ${switchNavWidth}px) {
-    align-self: flex-end;
     width: 5vw;
-    margin: 0 0 2vw;
+    margin: 0 4vw 0 0;
+  }
+  @media only screen and (min-width: 1200px) {
+    width: 4vw;
   }
 `;
 
@@ -81,6 +83,10 @@ const LogoLink = styled(Link)`
     visibility: hidden;
     transform: scale(0);
   `}
+  @media only screen and (min-width: ${switchNavWidth}px) {
+    visibility: visible;
+    transform: scale(1);
+  }
 `;
 
 const Header = ({ siteTitle }) => {
@@ -100,10 +106,8 @@ const Header = ({ siteTitle }) => {
   // scroll listener for mobile only
   const scrollListener = (event) => {
     const offset = window.pageYOffset;
-    if (window.innerWidth < switchNavWidth) {
-      if (offset > condenseValue && !condensednav) setCondensednav(true);
-      else if (offset <= condenseValue && condensednav) setCondensednav(false);
-    }
+    if (offset > condenseValue && !condensednav) setCondensednav(true);
+    else if (offset <= condenseValue && condensednav) setCondensednav(false);
   }
 
   useEffect(() => {
