@@ -7,9 +7,7 @@ const Container = styled.div`
     ${props => props.backgroundColor && `
         background-color: ${props.backgroundColor};
     `}
-    ${props => props.margin && `
-        margin: ${props.margin};
-    `}
+    ${props => props.custom && props.custom}
     padding: 1vw 2vw;
     border-radius: 10vw;
     cursor: pointer;
@@ -26,9 +24,9 @@ const Label = styled(ResponsiveText)`
     `}
 `;
 
-export default function DefaultButton({text, color, backgroundColor, margin}) {
+export default function DefaultButton({text, color, backgroundColor, custom}) {
     return (
-        <Container backgroundColor={backgroundColor} margin={margin}>
+        <Container backgroundColor={backgroundColor} custom={custom}>
             <Label color={color}>{text}</Label>
         </Container>
     )

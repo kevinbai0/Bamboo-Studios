@@ -10,6 +10,13 @@ import { LandingContainer, TitleTagline, Subline, SecondaryContainer, SecondLand
 import DefaultButton from "../components/default-button";
 import LogoTitle from "../components/logo-title";
 
+const scaledMargins = `
+  margin: 4vw 4vw 0 0;
+  @media only screen and (min-width: 600px) {
+    margin: 2vw 2vw 0 0;
+  }
+`;
+
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
@@ -21,11 +28,21 @@ const IndexPage = () => (
     <SecondaryContainer>
       <SecondLandingHeader>We design & develop custom solutions for you.</SecondLandingHeader>
       <ButtonsContainer>
-        <LabelButton text="Websites" margin={"2vw 2vw 0 0"}/>
-        <LabelButton text="Mobile Apps" margin={"2vw 2vw 0 0"}/>
-        <LabelButton text="Software Development" margin={"2vw 2vw 0 0"}/>
+        <LabelButton text="Websites" custom={scaledMargins}/>
+        <LabelButton text="Mobile Apps" custom={scaledMargins}/>
+        <LabelButton text="Software Development" custom={scaledMargins}/>
       </ButtonsContainer>
-      <DefaultButton text="See our work" backgroundColor={theme.colors.lightColor} color={theme.colors.darkColor} margin={"2vw 0 0"}/>
+      <DefaultButton 
+        text="See our work"
+        backgroundColor={theme.colors.lightColor} 
+        color={theme.colors.darkColor}
+        custom={`
+          margin: 4vw 0 0;
+          @media only screen and (min-width: 600px) {
+            margin: 2vw 0 0;
+          }
+        `}
+      />
     </SecondaryContainer>
     <ContactContainer>
       

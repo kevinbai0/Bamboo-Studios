@@ -7,12 +7,12 @@ const Container = styled.div`
     border-radius: 1vw;
     padding: 2.5vw;
     cursor: pointer;
-    margin: ${props => props.margin || 0 };
     transition: all 0.2s ease;
     box-shadow: 0 2px 16px 0 rgba(0,0,0,0.2);
     &:hover {
         transform: scale(1.02);
     }
+    ${props => props.custom && props.custom};
 `;
 
 const Label = styled(theme.ResponsiveText)`
@@ -20,9 +20,9 @@ const Label = styled(theme.ResponsiveText)`
     font-weight: 700;
 `;
 
-export default function LabelButton({text, margin}) {
+export default function LabelButton({text, custom}) {
     return (
-        <Container margin={margin}>
+        <Container custom={custom}>
             <Label>{text && text}</Label>
         </Container>
     );
