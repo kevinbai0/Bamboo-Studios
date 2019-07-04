@@ -2,19 +2,19 @@ import React from "react";
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Logo from "../components/logo";
 import * as theme from "../utils/theme";
 
 import LabelButton from "../components/custom/LabelButton";
 
 import { LandingContainer, TitleTagline, Subline, SecondaryContainer, SecondLandingHeader, ButtonsContainer, ContactContainer } from "../styled-components/landing-components";
 import DefaultButton from "../components/default-button";
+import LogoTitle from "../components/logo-title";
 
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
     <LandingContainer>
-      <Logo />
+      <LogoTitle />
       <TitleTagline>We build experiences that last.</TitleTagline>
       <Subline>Take your business to the next level and gain an advantage in the digital world.</Subline>
     </LandingContainer>

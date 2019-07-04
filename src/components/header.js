@@ -3,6 +3,7 @@ import React from "react";
 import styled from "styled-components";
 
 import * as theme from "../utils/theme";
+import Logo from "./logo";
 
 const Nav = styled.nav`
   position: fixed;
@@ -44,6 +45,7 @@ const CustomLink = styled(theme.StyledLink)`
 const Header = ({ siteTitle }) => (
   <header>
     <Nav>
+      <Logo />
       <theme.ResponsiveText as={CustomLink} to={"/work"}>Work</theme.ResponsiveText>
       <theme.ResponsiveText as={CustomLink} to={"/about"}>About</theme.ResponsiveText>      
       <theme.ResponsiveText as={CustomLink} to={"/contact"}>Contact</theme.ResponsiveText>

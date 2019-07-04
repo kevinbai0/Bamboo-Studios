@@ -1,49 +1,32 @@
-import React from "react";
-import styled from "styled-components";
-import * as theme from "../utils/theme";
-import logoImg from "../../assets/Logo@2x.png";
-const Container = styled.div`
-    display: flex;
-`;
+import React from "react"
+import { useStaticQuery, graphql } from "gatsby"
+import Img from "gatsby-image"
 
-const TextElement = styled.span`
-    padding: 4vw 4.8vw;
-    font-size: 7vw;
-    color: ${props => props.isLight ? theme.colors.lightColor : theme.colors.darkColor};
-    border: 3px solid transparent;
-    @media only screen and (min-width: 600px) {
-        padding: 2.5vw 3vw;
-        font-size: 4vw;
-    }
-    @media only screen and (min-width: 900px) {
-        padding: 2.5vw 2.2vw;
-        font-size: 4vw;
-    }
-`;
+/*
+ * This component is built using `gatsby-image` to automatically serve optimized
+ * images with lazy loading and reduced file sizes. The image is loaded using a
+ * `useStaticQuery`, which allows us to load the image from directly within this
+ * component, rather than having to pass the image data down from pages.
+ *
+ * For more information, see the docs:
+ * - `gatsby-image`: https://gatsby.dev/gatsby-image
+ * - `useStaticQuery`: https://www.gatsbyjs.org/docs/use-static-query/
+ */
 
-const BorderedElement = styled(TextElement)`
-    border: 3px solid ${props => props.isLight ? theme.colors.lightColor : theme.colors.darkColor};
-    border-radius: 1vw;
-    @media only screen and (min-width: 600px) {
-        border-radius: 0.75vw;
+const Logo = () => {
+  const data = useStaticQuery(graphql`
+    query {
+      placeholderImage: file(relativePath: { eq: "Logo.128.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 300) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
     }
-    @media only screen and (min-width: 900px) {
-        border-radius: 0.5vw;
-    }
-`;
-const Image = styled.img`
-    max-width: 60vw;
-    max-height: 50vh;
-    @media only screen and (min-width: 900px) {
-        max-width: 40vw;
-    }
-`;
+  `)
 
-export default function Logo({isLight}) {
-    return (
-        <Container>
-            <BorderedElement isLight={isLight}>Bamboo</BorderedElement>
-            <TextElement isLight={isLight}>Studios.</TextElement>
-        </Container>
-    );
+  return <Img fluid={data.placeholderImage.childImageSharp.fluid} />
 }
+
+export default Logo

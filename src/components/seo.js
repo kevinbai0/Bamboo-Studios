@@ -69,7 +69,7 @@ function SEO({ description, lang, meta, title }) {
         },
       ].concat(meta)}
     >
-      <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,800&display=swap" rel="stylesheet"/>
+      <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,700,800,900&display=swap" rel="stylesheet"/>
     </Helmet>
   )
 }
