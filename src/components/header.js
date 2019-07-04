@@ -37,16 +37,16 @@ const CustomLink = styled(theme.StyledLink)`
   color: ${theme.colors.lightColor};
   @media only screen and (min-width: 900px) {
     color: ${theme.colors.darkColor};
-    margin: 0 0 1vw;
+    margin: 0 0 2vw;
   }
 `;
 
 const Header = ({ siteTitle }) => (
   <header>
     <Nav>
-      <CustomLink to={"#"}>Work</CustomLink>
-      <CustomLink to={"#"}>About</CustomLink>
-      <CustomLink to={"#"}>Contact</CustomLink>
+      <theme.ResponsiveText as={CustomLink} to={"/work"}>Work</theme.ResponsiveText>
+      <theme.ResponsiveText as={CustomLink} to={"/about"}>About</theme.ResponsiveText>      
+      <theme.ResponsiveText as={CustomLink} to={"/contact"}>Contact</theme.ResponsiveText>
     </Nav>
   </header>
 )

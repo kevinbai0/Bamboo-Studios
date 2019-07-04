@@ -34,17 +34,17 @@ export const ResponsiveHeader = styled.h2`
 `;
 
 export const ResponsiveText = styled.span`
-    font-size: 4vw;
+    font-size: ${props => ((props.baseSize || 18) * 0.2)}vw;
     @media only screen and (min-width: 450px) {
-        font-size: 2.75vw;
+        font-size: ${props => ((props.baseSize || 18) * 0.15)}vw;
     }
     @media only screen and (min-width: 600px) {
-        font-size: 2.25vw;
+        font-size: ${props => ((props.baseSize || 18) * 0.125)}vw;
     }
     @media only screen and (min-width: 900px) {
-        font-size: 1.75vw;
+        font-size: ${props => ((props.baseSize || 18) * 0.1)}vw;
     }
     @media only screen and (min-width: 1280px) {
-        font-size: 1.5vw;
+        font-size: ${props => ((props.baseSize || 18) * 0.08)}vw;
     }
 `;
