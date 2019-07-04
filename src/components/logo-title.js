@@ -30,13 +30,6 @@ const BorderedElement = styled(TextElement)`
         border-radius: 0.5vw;
     }
 `;
-const Image = styled.img`
-    max-width: 60vw;
-    max-height: 50vh;
-    @media only screen and (min-width: 900px) {
-        max-width: 40vw;
-    }
-`;
 
 export default function LogoTitle({isLight}) {
     return (

@@ -1,4 +1,6 @@
-import React from "react";
+/*global FB*/
+
+import React, { useEffect } from "react";
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -17,37 +19,73 @@ const scaledMargins = `
   }
 `;
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <LandingContainer>
-      <LogoTitle />
-      <TitleTagline>We build experiences that last.</TitleTagline>
-      <Subline>Take your business to the next level and gain an advantage in the digital world.</Subline>
-    </LandingContainer>
-    <SecondaryContainer>
-      <SecondLandingHeader>We design & develop custom solutions for you.</SecondLandingHeader>
-      <ButtonsContainer>
-        <LabelButton text="Websites" custom={scaledMargins}/>
-        <LabelButton text="Mobile Apps" custom={scaledMargins}/>
-        <LabelButton text="Software Development" custom={scaledMargins}/>
-      </ButtonsContainer>
-      <DefaultButton 
-        text="See our work"
-        backgroundColor={theme.colors.lightColor} 
-        color={theme.colors.darkColor}
-        custom={`
-          margin: 4vw 0 0;
-          @media only screen and (min-width: 600px) {
-            margin: 2vw 0 0;
-          }
-        `}
-      />
-    </SecondaryContainer>
-    <ContactContainer>
-      
-    </ContactContainer>
-  </Layout>
-)
+const loadFbLoginApi = () => {
+  window.fbAsyncInit = function() {
+      FB.init({
+          appId: "324104641866796",
+          cookie: true,  // enable cookies to allow the server to access
+          // the session
+          xfbml: true,  // parse social plugins on this page
+          version: 'v2.5' // use version 2.1
+      });
+      console.log(FB);
+      // TODO: after published
+      FB.CustomerChat.show(true);
+      FB.CustomerChat.showDialog();
+  };
+
+    // Load the SDK asynchronously
+  (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js";
+      fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+  /*(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));*/
+}
+
+const IndexPage = () => {
+  useEffect(() => {
+    loadFbLoginApi();
+  }, [])
+  return (
+    <Layout>
+      <SEO title="Home" />
+      <LandingContainer>
+        <LogoTitle />
+        <TitleTagline>We build experiences that last.</TitleTagline>
+        <Subline>Take your business to the next level and gain an advantage in the digital world.</Subline>
+      </LandingContainer>
+      <SecondaryContainer>
+        <SecondLandingHeader>We design & develop custom solutions for you.</SecondLandingHeader>
+        <ButtonsContainer>
+          <LabelButton text="Websites" custom={scaledMargins}/>
+          <LabelButton text="Mobile Apps" custom={scaledMargins}/>
+          <LabelButton text="Software Development" custom={scaledMargins}/>
+        </ButtonsContainer>
+        <DefaultButton 
+          text="See our work"
+          backgroundColor={theme.colors.lightColor} 
+          color={theme.colors.darkColor}
+          custom={`
+            margin: 4vw 0 0;
+            @media only screen and (min-width: 600px) {
+              margin: 2vw 0 0;
+            }
+          `}
+        />
+      </SecondaryContainer>
+      <ContactContainer>
+      </ContactContainer>
+    </Layout>
+  )
+}
 
 export default IndexPage
