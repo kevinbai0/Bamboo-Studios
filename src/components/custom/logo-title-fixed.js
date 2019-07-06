@@ -7,8 +7,8 @@ const Container = styled.div`
 `;
 
 const TextElement = styled.span`
-    padding: 20px 40px;
-    font-size: 30px;
+    padding: ${props => props.percent ? (props.percent * 10) + "px " + (props.percent * 20) + "px" : "10px 20px" };
+    font-size: ${props => props.percent ? props.percent * 30 : 30}px;
     color: ${props => props.isLight ? theme.colors.lightColor : theme.colors.darkColor};
     border: 3px solid transparent;
 `;
@@ -18,11 +18,11 @@ const BorderedElement = styled(TextElement)`
     border-radius: 5px;
 `;
 
-export default function LogoTitleFixed({isLight, custom}) {
+export default function LogoTitleFixed({isLight, custom, percent}) {
     return (
         <Container className={"logo-title"} custom={custom}>
-            <BorderedElement isLight={isLight}>Bamboo</BorderedElement>
-            <TextElement isLight={isLight}>Studios.</TextElement>
+            <BorderedElement isLight={isLight} percent={percent}>Bamboo</BorderedElement>
+            <TextElement isLight={isLight} percent={percent}>Studios.</TextElement>
         </Container>
     );
 }

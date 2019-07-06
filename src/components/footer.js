@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import * as theme from "../utils/theme";
-import LogoTitle from "./custom/logo-title";
 import Img from "gatsby-image";
 import { useStaticQuery, graphql } from "gatsby";
+import LogoTitleFixed from "./custom/logo-title-fixed";
 const mobileWidth = 750;
 
 const Container = styled.footer`
@@ -11,12 +11,14 @@ const Container = styled.footer`
     display: grid;
     grid-template-rows: auto auto auto;
     grid-template-columns: auto auto;
+    align-items: end;
     padding: 10vw;
     grid-gap: 3vw;
 
     @media only screen and (min-width: ${mobileWidth}px) {
         grid-template-rows: auto auto;
-        padding: 5vw;
+        padding: 3vw;
+        grid-gap: 2vw;
     }
 `;
 
@@ -26,8 +28,10 @@ const LinksContainer = styled.div`
     flex-direction: column;
     justify-content: space-between;
     @media only screen and (min-width: ${mobileWidth}px) {
+        align-self: center;
         grid-row: 1/2;
         flex-direction: row;
+        justify-content: flex-start;
     }
 `;
 
@@ -51,6 +55,9 @@ const ContactContainer = styled.div`
 const CustomLink = styled(theme.StyledLink)`
     color: ${theme.colors.lightColor};
     font-weight: 700;
+    @media only screen and (min-width: ${mobileWidth}px) {
+        margin: 0 3vw 0 0;
+    }
 `;
 
 const Icon = styled(Img)`
@@ -62,31 +69,50 @@ const Icon = styled(Img)`
         width: 5vw;
         height: 5vw;
     }
+    @media only screen and (min-width: 1200px) {
+        width: 3vw;
+        height: 3vw;
+    }
 `;
 
 const ContactLink = styled(theme.StyledExternalLink)`
     color: ${theme.colors.lightColor};
+    @media only screen and (min-width: ${mobileWidth}px) {
+        margin: 0 0 0.5vw 0;
+    }
 `;
 
 export default function Footer() {
     const data = useStaticQuery(graphql`
-    query {
-      facebook: file(relativePath: { eq: "facebook-icon.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 300) {
-            ...GatsbyImageSharpFluid
-          }
+        query {
+            facebook: file(relativePath: { eq: "facebook-icon.png" }) {
+                childImageSharp {
+                fluid(maxWidth: 300) {
+                    ...GatsbyImageSharpFluid
+                }
+                }
+            }
+            instagram: file(relativePath: { eq: "instagram-icon.png" }) {
+                childImageSharp {
+                fluid(maxWidth: 300) {
+                    ...GatsbyImageSharpFluid
+                }
+                }
+            }
         }
-      }
-      instagram: file(relativePath: { eq: "instagram-icon.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 300) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
+    `);
+
+    const [ usingMobileFooter, setUsingMobileFooter ] = useState(true);
+
+    const resizeListener = () => {
+        if (window.innerWidth >= mobileWidth && usingMobileFooter) setUsingMobileFooter(false);
+        else if (window.innerWidth < mobileWidth && !usingMobileFooter) setUsingMobileFooter(true);
     }
-  `);
+
+    useEffect(() => {
+        window.addEventListener("resize", resizeListener);
+        return () => window.removeEventListener("resize", resizeListener);
+    })
     return (
         <Container>
             <LinksContainer>
@@ -103,13 +129,13 @@ export default function Footer() {
                 <theme.ResponsiveText as={ContactLink} href={"tel:+18076334358"}>+1 (807) 633-4358</theme.ResponsiveText>
                 <theme.ResponsiveText as={ContactLink} href="mailto:kevinbai@bamboostudios.ca">kevinbai@bamboostudios.ca</theme.ResponsiveText>
             </ContactContainer>
-            <LogoTitle isLight={true} custom={`
+            <LogoTitleFixed isLight={true} custom={`
                 grid-column: 1/3;
                 @media only screen and (min-width: ${mobileWidth}px) {
                     grid-column: 1/2;
                     grid-row: 2/3;
                 }
-            `}/>
+            `} percent={usingMobileFooter ? 0.5 : 1}/>
         </Container>
     );
 }
