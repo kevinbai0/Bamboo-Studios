@@ -42,12 +42,15 @@ export const Subline = styled.h3`
 
 export const SecondaryContainer = styled.div`
   background-color: ${theme.colors.darkColor};
-  padding: 10vw 15vw;
+  padding: 10vw 8vw;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  @media only screen and (min-width: 600px) {
+    padding: 10vw 15vw;
+  }
   @media only screen and (min-width: 1200px) {
-    padding: 6vw 10vw;
+    padding: 6vw 8vw;
   }
 `;
 
