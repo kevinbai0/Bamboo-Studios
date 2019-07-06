@@ -14,6 +14,11 @@ const Container = styled(theme.StyledLink)`
     @media only screen and (min-width: 600px) {
         padding: 0.5vw 0 0.5vw 1.5vw;
     }
+    @media only screen and (min-width: 1200px) {
+      padding: 0.3vw 0 0.3vw 1.5vw;
+    }
+
+    ${props => props.customStyle && props.customStyle}
 `;
 
 const TextComponent = styled(theme.ResponsiveText)`
@@ -28,9 +33,13 @@ const Icon = styled(Img)`
         margin: 0 0.5vw 0 2vw;
         width: 3vw;
     }
+    @media only screen and (min-width: 1200px) {
+        margin: 0 0.3vw 0 2vw;
+        width: 2vw;
+    }
 `;
 
-export default function MessengerButton() {
+export default function MessengerButton({customStyle}) {
     const data = useStaticQuery(graphql`
     query {
       placeholderImage: file(relativePath: { eq: "messenger-icon.png" }) {
@@ -44,7 +53,7 @@ export default function MessengerButton() {
   `);
 
     return (
-        <Container as={"a"} href="https://m.me/bamboostudiosdesign" target="_blank">
+        <Container as={"a"} href="https://m.me/bamboostudiosdesign" target="_blank" customStyle={customStyle}>
             <TextComponent>Messenger</TextComponent>
             <Icon as={Img} fluid={data.placeholderImage.childImageSharp.fluid} />
         </Container>

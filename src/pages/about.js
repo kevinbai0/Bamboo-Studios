@@ -18,7 +18,7 @@ export default function AboutPage() {
 
     return (
         <Layout>
-            <SEO title="Home" />
+            <SEO title="About" />
             <TemplatePage title="About">
                 <theme.ResponsiveHeader as={TemplateHeader}>Who we are</theme.ResponsiveHeader>
                 <theme.FluidText as={AboutParagraph}>

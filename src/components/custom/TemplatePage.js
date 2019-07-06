@@ -33,20 +33,25 @@ const Title = styled.h1`
 export const TemplateHeader = styled.h2`
     color: ${theme.colors.darkColor};
     font-weight: 900;
-    margin-top: 5vw;
+    margin: 8vw auto auto;
     padding: 0 0 2vw 0;
-    ${props => props.custom && props.custom}
+`;
+
+export const TemplateSubheader = styled.h3`
+    color: ${theme.colors.darkColor};
+    font-weight: ${props => props.fontWeight || 800};
+    margin: 2vw 0 0;
 `;
 
 const Container = styled.div`
     ${props => props.custom && props.custom}
 `;
 
-export default function TemplatePage({title, children, custom}) {
+export default function TemplatePage({title, children, containerStyle}) {
     return (
         <Page>
             <Title>{title}</Title>
-            <Container custom={custom}>
+            <Container custom={containerStyle}>
                 {children}
             </Container>
         </Page>

@@ -47,6 +47,7 @@ export const ResponsiveHeader = styled.h2`
     @media only screen and (min-width: 900px) {
         font-size: calc(12px + ${props => props.percent ? props.percent * 2 : 2}vw);
     }
+    ${props => props.customStyle && props.customStyle};
 `;
 
 export const ResponsiveText = styled.span`
