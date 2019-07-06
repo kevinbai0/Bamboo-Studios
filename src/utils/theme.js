@@ -15,6 +15,7 @@ export const StyledLink = styled(Link)`
         opacity: 0.5;
     }
 `;
+
 export const StyledExternalLink = styled.a`
     color: ${colors.darkColor};
     text-decoration: inherit;
@@ -42,7 +43,7 @@ export const ResponsiveHeader = styled.h2`
 `;
 
 export const ResponsiveText = styled.span`
-    font-size: ${props => ((props.baseSize || 18) * 0.2)}vw;
+    font-size: ${props => ((props.baseSize || 18) * 0.24)}vw;
     @media only screen and (min-width: 450px) {
         font-size: ${props => ((props.baseSize || 18) * 0.15)}vw;
     }

@@ -8,11 +8,14 @@ const Container = styled.div`
         background-color: ${props.backgroundColor};
     `}
     ${props => props.custom && props.custom}
-    padding: 1vw 2vw;
+    padding: 1vw 4vw;
     border-radius: 10vw;
     cursor: pointer;
     box-shadow: 0 2px 16px 0 rgba(0,0,0,0.2);
     transition: all 0.2s ease;
+    @media only screen and (min-width: 600px) {
+        padding: 1vw 2vw;
+    }
     &:hover {
         transform: scale(1.02);
     }

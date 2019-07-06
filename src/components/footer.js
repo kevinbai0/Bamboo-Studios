@@ -130,8 +130,8 @@ export default function Footer() {
                 <Icon as={Img} fluid={data.instagram.childImageSharp.fluid} />
             </SocialContainer>
             <ContactContainer>
-                <theme.ResponsiveText as={ContactLink} href={"tel:+18076334358"}>+1 (807) 633-4358</theme.ResponsiveText>
-                <theme.ResponsiveText as={ContactLink} href="mailto:kevinbai@bamboostudios.ca">kevinbai@bamboostudios.ca</theme.ResponsiveText>
+                <theme.ResponsiveText as={ContactLink} href={"tel:+18076334358"} baseSize={16}>+1 (807) 633-4358</theme.ResponsiveText>
+                <theme.ResponsiveText as={ContactLink} href="mailto:kevinbai@bamboostudios.ca" baseSize={16}>kevinbai@bamboostudios.ca</theme.ResponsiveText>
             </ContactContainer>
             <LogoTitleFixed isLight={true} custom={`
                 grid-column: 1/3;
@@ -139,7 +139,7 @@ export default function Footer() {
                     grid-column: 1/2;
                     grid-row: 2/3;
                 }
-            `} percent={usingMobileFooter ? 0.5 : 1}/>
+            `} percent={usingMobileFooter ? 0.6 : 1}/>
         </Container>
     );
 }
