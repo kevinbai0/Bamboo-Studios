@@ -6,7 +6,7 @@ import * as theme from "../utils/theme";
 import MessengerButton from "../components/custom/MessengerButton";
 import ContactForm from "../components/custom/ContactForm";
 import { useStaticQuery, graphql } from "gatsby";
-import { LocationImage, FindUsSection, AddressField, ContactField, ContactSymbol } from "../styled-components/contact-components";
+import { ContactContainerStyle, LocationImage, FindUsSection, AddressField, ContactField, ContactSymbol, ContactFormStyle } from "../styled-components/contact-components";
 
 export default function ContactPage() {
     const data = useStaticQuery(graphql`
@@ -23,14 +23,14 @@ export default function ContactPage() {
     return (
         <Layout>
             <SEO title="Contact" />
-            <TemplatePage title="Contact" >
+            <TemplatePage title="Contact" containerStyle={ContactContainerStyle}>
                 <theme.ResponsiveHeader as={TemplateHeader} customStyle={`padding: 0 0 1vw; margin: auto auto 0`}>Message Us</theme.ResponsiveHeader>
-                <MessengerButton customStyle={`display: inline-flex; margin: auto auto 4vw`}/>
+                <MessengerButton customStyle={`display: inline-flex; margin: 0 0 4vw`}/>
                 <theme.ResponsiveHeader percent={0.8} as={TemplateSubheader}>Or shoot us an email</theme.ResponsiveHeader>
-                <ContactForm />
+                <ContactForm customStyle={ContactFormStyle} />
                 <LocationImage fluid={data.image.childImageSharp.fluid}/>
                 <FindUsSection>
-                    <theme.ResponsiveHeader as={TemplateHeader}>Find Us</theme.ResponsiveHeader>
+                    <theme.ResponsiveHeader as={TemplateHeader}>Visit Us</theme.ResponsiveHeader>
                     <theme.ResponsiveHeader as={TemplateSubheader} percent={0.8} fontWeight={700}>Lakehead University CASES Building</theme.ResponsiveHeader>
                     <theme.ResponsiveText as={AddressField}>
                         <span>955 Oliver Road</span>

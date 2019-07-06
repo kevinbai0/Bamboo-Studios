@@ -33,18 +33,21 @@ const Title = styled.h1`
 export const TemplateHeader = styled.h2`
     color: ${theme.colors.darkColor};
     font-weight: 900;
-    margin: 8vw auto auto;
+    margin: 8vw 0 auto;
     padding: 0 0 2vw 0;
 `;
 
 export const TemplateSubheader = styled.h3`
     color: ${theme.colors.darkColor};
     font-weight: ${props => props.fontWeight || 800};
-    margin: 2vw 0 0;
+    margin: 1vw 0 0;
+    @media only screen and (min-width: ${theme.mobileSwitchWidth}px) {
+        margin: 0;
+    }
 `;
 
 const Container = styled.div`
-    ${props => props.custom && props.custom}
+    ${props => props.custom && props.custom};
 `;
 
 export default function TemplatePage({title, children, containerStyle}) {
