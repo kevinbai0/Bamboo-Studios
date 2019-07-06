@@ -102,7 +102,7 @@ export default function Footer() {
         }
     `);
 
-    const [ usingMobileFooter, setUsingMobileFooter ] = useState(true);
+    const [ usingMobileFooter, setUsingMobileFooter ] = useState(window.innerWidth < mobileWidth);
 
     const resizeListener = () => {
         if (window.innerWidth >= mobileWidth && usingMobileFooter) setUsingMobileFooter(false);
