@@ -4,7 +4,6 @@ import * as theme from "../utils/theme";
 import Img from "gatsby-image";
 import { useStaticQuery, graphql } from "gatsby";
 import LogoTitleFixed from "./custom/logo-title-fixed";
-const mobileWidth = 750;
 
 const Container = styled.footer`
     background-color: ${theme.colors.tintColor};
@@ -15,7 +14,7 @@ const Container = styled.footer`
     padding: 10vw;
     grid-gap: 3vw;
 
-    @media only screen and (min-width: ${mobileWidth}px) {
+    @media only screen and (min-width: ${theme.mobileSwitchWidth}px) {
         grid-template-rows: auto auto;
         padding: 3vw;
         grid-gap: 2vw;
@@ -27,7 +26,7 @@ const LinksContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    @media only screen and (min-width: ${mobileWidth}px) {
+    @media only screen and (min-width: ${theme.mobileSwitchWidth}px) {
         align-self: center;
         grid-row: 1/2;
         flex-direction: row;
@@ -47,7 +46,7 @@ const ContactContainer = styled.div`
     justify-self: end;
     text-align: right;
     align-self: end;
-    @media only screen and (min-width: ${mobileWidth}px) {
+    @media only screen and (min-width: ${theme.mobileSwitchWidth}px) {
         grid-column: 2/3;
     }
 `;
@@ -55,7 +54,7 @@ const ContactContainer = styled.div`
 const CustomLink = styled(theme.StyledLink)`
     color: ${theme.colors.lightColor};
     font-weight: 700;
-    @media only screen and (min-width: ${mobileWidth}px) {
+    @media only screen and (min-width: ${theme.mobileSwitchWidth}px) {
         margin: 0 3vw 0 0;
     }
 `;
@@ -65,7 +64,7 @@ const Icon = styled(Img)`
     height: 10vw;
     margin: 0 0 0 2vw;
 
-    @media only screen and (min-width: ${mobileWidth}px) {
+    @media only screen and (min-width: ${theme.mobileSwitchWidth}px) {
         width: 5vw;
         height: 5vw;
     }
@@ -77,7 +76,7 @@ const Icon = styled(Img)`
 
 const ContactLink = styled(theme.StyledExternalLink)`
     color: ${theme.colors.lightColor};
-    @media only screen and (min-width: ${mobileWidth}px) {
+    @media only screen and (min-width: ${theme.mobileSwitchWidth}px) {
         margin: 0 0 0.5vw 0;
     }
 `;
@@ -87,16 +86,16 @@ export default function Footer() {
         query {
             facebook: file(relativePath: { eq: "facebook-icon.png" }) {
                 childImageSharp {
-                fluid(maxWidth: 300) {
-                    ...GatsbyImageSharpFluid
-                }
+                    fluid(maxWidth: 300) {
+                        ...GatsbyImageSharpFluid
+                    }
                 }
             }
             instagram: file(relativePath: { eq: "instagram-icon.png" }) {
                 childImageSharp {
-                fluid(maxWidth: 300) {
-                    ...GatsbyImageSharpFluid
-                }
+                    fluid(maxWidth: 300) {
+                        ...GatsbyImageSharpFluid
+                    }
                 }
             }
         }
@@ -105,12 +104,12 @@ export default function Footer() {
     const [ usingMobileFooter, setUsingMobileFooter ] = useState(false);
 
     useEffect(() => {
-        if (window.innerWidth >= mobileWidth) setUsingMobileFooter(true);
+        if (window.innerWidth < theme.mobileSwitchWidth) setUsingMobileFooter(true);
     }, [])
 
     const resizeListener = () => {
-        if (window.innerWidth >= mobileWidth && usingMobileFooter) setUsingMobileFooter(false);
-        else if (window.innerWidth < mobileWidth && !usingMobileFooter) setUsingMobileFooter(true);
+        if (window.innerWidth >= theme.mobileSwitchWidth && usingMobileFooter) setUsingMobileFooter(false);
+        else if (window.innerWidth < theme.mobileSwitchWidth && !usingMobileFooter) setUsingMobileFooter(true);
     }
 
     useEffect(() => {
@@ -135,7 +134,7 @@ export default function Footer() {
             </ContactContainer>
             <LogoTitleFixed isLight={true} custom={`
                 grid-column: 1/3;
-                @media only screen and (min-width: ${mobileWidth}px) {
+                @media only screen and (min-width: ${theme.mobileSwitchWidth}px) {
                     grid-column: 1/2;
                     grid-row: 2/3;
                 }

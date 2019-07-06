@@ -1,6 +1,13 @@
 import styled from "styled-components";
 import { Link } from "gatsby";
 
+/**
+ * Responsive: resizes dynamically based on screen width
+ * Fluid: size stays the same, text wraps instead, uses some queries
+ */
+
+export const mobileSwitchWidth = 750;
+
 export const colors = {
     lightColor: "#F2E3D4",
     darkColor: "#3B1D00",
@@ -33,22 +40,22 @@ export const Tagline = styled.h1`
 
 export const ResponsiveHeader = styled.h2`
     font-weight: 900;
-    font-size: 6vw;
+    font-size: ${props => props.percent ? props.percent * 6 : 6}vw;
     @media only screen and (min-width: 450px) {
-        font-size: 5vw;
+        font-size: ${props => props.percent ? props.percent * 5 : 5}vw;
     }
     @media only screen and (min-width: 900px) {
-        font-size: calc(12px + 2vw);
+        font-size: calc(12px + ${props => props.percent ? props.percent * 2 : 2}vw);
     }
 `;
 
 export const ResponsiveText = styled.span`
     font-size: ${props => ((props.baseSize || 18) * 0.24)}vw;
     @media only screen and (min-width: 450px) {
-        font-size: ${props => ((props.baseSize || 18) * 0.15)}vw;
+        font-size: ${props => ((props.baseSize || 18) * 0.18)}vw;
     }
     @media only screen and (min-width: 600px) {
-        font-size: ${props => ((props.baseSize || 18) * 0.125)}vw;
+        font-size: ${props => ((props.baseSize || 18) * 0.14)}vw;
     }
     @media only screen and (min-width: 900px) {
         font-size: ${props => ((props.baseSize || 18) * 0.1)}vw;
@@ -56,4 +63,8 @@ export const ResponsiveText = styled.span`
     @media only screen and (min-width: 1280px) {
         font-size: ${props => ((props.baseSize || 18) * 0.08)}vw;
     }
+`;
+
+export const FluidText = styled.p`
+
 `;

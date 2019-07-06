@@ -6,10 +6,10 @@ import { useStaticQuery, graphql, Link } from "gatsby"
 
 import * as theme from "../utils/theme";
 
-const switchNavWidth = 750;
 const condenseValue = 50;
 
 const Nav = styled.nav`
+  z-index: 10;
   position: fixed;
   display: grid;
   grid-template-rows: auto auto;
@@ -29,7 +29,7 @@ const Nav = styled.nav`
   `};
   transition: all 0.2s ease;
 
-  @media only screen and (min-width: ${switchNavWidth}px) {
+  @media only screen and (min-width: ${theme.mobileSwitchWidth}px) {
     border-radius: none;
     display: flex;
     align-items: center;
@@ -48,7 +48,7 @@ const CustomLink = styled(theme.StyledLink)`
   font-weight: 600;
   grid-row: 2/3;
   color: ${props => props.condensednav ? theme.colors.lightColor : theme.colors.darkColor};
-  @media only screen and (min-width: ${switchNavWidth}px) {
+  @media only screen and (min-width: ${theme.mobileSwitchWidth}px) {
     margin: 0 2vw 0 0;
   }
 `;
@@ -64,7 +64,7 @@ const Logo = styled(Img)`
     width: 7vw;
     
   }
-  @media only screen and (min-width: ${switchNavWidth}px) {
+  @media only screen and (min-width: ${theme.mobileSwitchWidth}px) {
     width: 5vw;
     margin: 0 4vw 0 0;
   }
@@ -83,7 +83,7 @@ const LogoLink = styled(Link)`
     visibility: hidden;
     transform: scale(0);
   `}
-  @media only screen and (min-width: ${switchNavWidth}px) {
+  @media only screen and (min-width: ${theme.mobileSwitchWidth}px) {
     visibility: visible;
     transform: scale(1);
   }
