@@ -8,10 +8,10 @@ const Page = styled.div`
         padding: 25vw 5vw 10vw;
     }
     @media only screen and (min-width: ${theme.mobileSwitchWidth}px) {
-        padding: 10vw 0 10vw 20vw;
+        padding: 10vw 0 5vw 20vw;
     }
     @media only screen and (min-width: 1200px) {
-        padding: 5vw 0 10vw 20vw;
+        padding: 5vw 0 5vw 20vw;
     }
 `;
 

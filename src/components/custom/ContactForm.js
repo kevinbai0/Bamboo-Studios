@@ -55,9 +55,9 @@ const Input = styled.input`
     @media only screen and (min-width: ${theme.mobileSwitchWidth}px) {
         padding: 1vw 1.5vw;
     }
-    @media only screen and (min-width: ${theme.mobileSwitchWidth}px) {
+    @media only screen and (min-width: 900px) {
         border-radius: 5px;
-        padding: 0.5vw 1.25vw;
+        padding: 0.5vw 0.75vw;
     }
     ${props => props.gridArea && `grid-area: ${props.gridArea}`};
 `;
