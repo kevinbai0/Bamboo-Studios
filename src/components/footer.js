@@ -102,7 +102,11 @@ export default function Footer() {
         }
     `);
 
-    const [ usingMobileFooter, setUsingMobileFooter ] = useState(window ? window.innerWidth < mobileWidth : false);
+    const [ usingMobileFooter, setUsingMobileFooter ] = useState(false);
+
+    useEffect(() => {
+        if (window.innerWidth >= mobileWidth) setUsingMobileFooter(true);
+    }, [])
 
     const resizeListener = () => {
         if (window.innerWidth >= mobileWidth && usingMobileFooter) setUsingMobileFooter(false);
