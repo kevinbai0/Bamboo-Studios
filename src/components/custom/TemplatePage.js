@@ -8,10 +8,10 @@ const Page = styled.div`
         padding: 25vw 5vw 10vw;
     }
     @media only screen and (min-width: ${theme.mobileSwitchWidth}px) {
-        padding: 10vw 0 5vw 20vw;
+        padding: 13vw 0 5vw 20vw;
     }
     @media only screen and (min-width: 1200px) {
-        padding: 5vw 0 5vw 20vw;
+        padding: 8vw 0 5vw 20vw;
     }
 `;
 
@@ -33,7 +33,7 @@ const Title = styled.h1`
 export const TemplateHeader = styled.h2`
     color: ${theme.colors.darkColor};
     font-weight: 900;
-    margin: 8vw 0 auto;
+    margin: 5vw 0 auto;
     padding: 0 0 2vw 0;
 `;
 
