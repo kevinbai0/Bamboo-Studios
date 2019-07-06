@@ -15,6 +15,14 @@ export const StyledLink = styled(Link)`
         opacity: 0.5;
     }
 `;
+export const StyledExternalLink = styled.a`
+    color: ${colors.darkColor};
+    text-decoration: inherit;
+    transition: all 0.2s ease;
+    &:hover, &:active {
+        opacity: 0.5;
+    }
+`;
 
 export const Tagline = styled.h1`
     line-height: 1.3;
@@ -24,9 +32,9 @@ export const Tagline = styled.h1`
 
 export const ResponsiveHeader = styled.h2`
     font-weight: 900;
-    font-size: 5vw;
+    font-size: 6vw;
     @media only screen and (min-width: 450px) {
-        font-size: 4vw;
+        font-size: 5vw;
     }
     @media only screen and (min-width: 900px) {
         font-size: calc(12px + 2vw);

@@ -8,9 +8,10 @@ import * as theme from "../utils/theme";
 
 import LabelButton from "../components/custom/LabelButton";
 
-import { LandingContainer, TitleTagline, Subline, SecondaryContainer, SecondLandingHeader, ButtonsContainer, ContactContainer } from "../styled-components/landing-components";
+import { LandingContainer, TitleTagline, Subline, SecondaryContainer, SecondLandingHeader, ButtonsContainer, ContactContainer, ContactHeader, MessageLabel } from "../styled-components/landing-components";
 import DefaultButton from "../components/default-button";
-import LogoTitle from "../components/logo-title";
+import LogoTitle from "../components/custom/logo-title";
+import MessengerButton from "../components/custom/MessengerButton";
 
 const scaledMargins = `
   margin: 4vw 4vw 0 0;
@@ -83,6 +84,9 @@ const IndexPage = () => {
         />
       </SecondaryContainer>
       <ContactContainer>
+        <ContactHeader>Let's Talk</ContactHeader>
+        <MessengerButton />
+        <MessageLabel baseSize={22}>Send us a message!</MessageLabel>
       </ContactContainer>
     </Layout>
   )

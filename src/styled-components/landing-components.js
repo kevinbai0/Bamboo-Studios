@@ -13,7 +13,7 @@ export const LandingContainer = styled.div`
     padding: 0 15vw 15vw;
   }
   @media only screen and (min-width: 1200px) {
-    padding: 0 10vw 10vw;
+    padding: 0 8vw 10vw;
   }
 `;
 export const TitleTagline = styled(Tagline)`
@@ -63,5 +63,23 @@ export const ButtonsContainer = styled.div`
 `;
 
 export const ContactContainer = styled.div`
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `;
+
+export const ContactHeader = styled(theme.ResponsiveHeader)`
+    color: ${theme.colors.darkColor};
+    margin: 10vw 0 3vw;
+    @media only screen and (min-width: 900px) {
+        margin: 5vw 0 3vw;
+    }
+`;
+
+export const MessageLabel = styled(theme.ResponsiveText)`
+    color: ${theme.colors.darkColor};
+    margin: 1vw 0 10vw;
+    @media only screen and (min-width: 900px) {
+        margin: 1vw 0 5vw;
+    }
+`
