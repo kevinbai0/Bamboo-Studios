@@ -65,6 +65,7 @@ export const ResponsiveText = styled.span`
     @media only screen and (min-width: 1280px) {
         font-size: ${props => ((props.baseSize || 18) * 0.08)}vw;
     }
+    ${props => props.customStyle && props.customStyle};
 `;
 
 export const FluidText = styled.p`

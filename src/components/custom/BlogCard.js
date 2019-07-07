@@ -14,7 +14,6 @@ const Card = styled.div`
     justify-content: stretch;
     overflow: hidden;
     color: ${theme.colors.lightColor};
-
 `;
 
 const InfoLayer = styled.div`
@@ -27,16 +26,29 @@ const ImageLayer = styled.div`
 `;
 
 const Title = styled.h2`
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 900;
     margin: 0;
+    @media only screen and (min-width: ${theme.mobileSwitchWidth}px) {
+        font-size: 22px;
+    }
 `;
 
 const DateLabel = styled.h3`
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 900;
     color: ${theme.colors.lightTintColor};
     margin: 0;
+    @media only screen and (min-width: ${theme.mobileSwitchWidth}px) {
+        font-size: 16px;
+    }
+`;
+
+const TimeLabel = styled.span`
+    font-size: 14px;
+    @media only screen and (min-width: ${theme.mobileSwitchWidth}px) {
+        font-size: 16px;
+    }
 `;
 
 export default function BlogCard({title,date,readTime,link}) {

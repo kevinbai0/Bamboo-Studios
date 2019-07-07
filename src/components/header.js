@@ -48,8 +48,14 @@ const CustomLink = styled(theme.StyledLink)`
   font-weight: 600;
   grid-row: 2/3;
   color: ${props => props.condensednav ? theme.colors.lightColor : theme.colors.darkColor};
+  ${props => props.noMobile && `display: none;`}
+
+
   @media only screen and (min-width: ${theme.mobileSwitchWidth}px) {
     margin: 0 2vw 0 0;
+    ${props => props.mobileOnly && `display: none;`}
+    ${props => props.noMobile && `display: block;`}
+
   }
 `;
 
@@ -79,6 +85,8 @@ const LogoLink = styled(Link)`
   grid-column-end: span 4;
   justify-self: center;
   transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
   ${props => props.condensednav && `
     visibility: hidden;
     transform: scale(0);
@@ -90,7 +98,8 @@ const LogoLink = styled(Link)`
 `;
 
 const Header = ({ siteTitle }) => {
-  const [condensednav, setCondensednav] = useState(false);
+  const [ condensednav, setCondensednav ] = useState(false);
+
   const data = useStaticQuery(graphql`
     query {
       placeholderImage: file(relativePath: { eq: "logo.png" }) {
@@ -118,7 +127,11 @@ const Header = ({ siteTitle }) => {
   return (
     <header>
       <Nav condensednav={condensednav}>
-        <LogoLink to={"/"} condensednav={condensednav}><Logo as={Img} fluid={data.placeholderImage.childImageSharp.fluid} /></LogoLink>
+        <LogoLink as={theme.StyledLink} to={"/"} condensednav={condensednav}>
+          <Logo as={Img} fluid={data.placeholderImage.childImageSharp.fluid} />
+          <theme.ResponsiveText as={CustomLink} to="/" condensednav={condensednav} mobileOnly customStyle={`margin: 0 0 0 3vw`}>Home</theme.ResponsiveText>
+        </LogoLink>
+        <theme.ResponsiveText as={CustomLink} to="/" condensednav={condensednav} noMobile>Home</theme.ResponsiveText>
         <theme.ResponsiveText as={CustomLink} to={"/work"} condensednav={condensednav}>Work</theme.ResponsiveText>
         <theme.ResponsiveText as={CustomLink} to={"/about"} condensednav={condensednav}>About</theme.ResponsiveText>   
         <theme.ResponsiveText as={CustomLink} to={"/blog"} condensednav={condensednav}>Blog</theme.ResponsiveText>         

@@ -11,12 +11,14 @@ import BlogCard from "../components/custom/BlogCard";
 const BlogContainer = styled.div`
   display: grid;
   grid-template-columns: 100%;
-  grid-auto-rows: 50vw;
+  grid-auto-rows: 70vw;
   grid-gap: 5vw;
+  margin: 5vw 0 0;
   @media only screen and (min-width: ${theme.mobileSwitchWidth}px) {
     grid-template-columns: 35vw 35vw;
     grid-auto-rows: 35vw;
     grid-gap: 2vw;
+    margin: 0;
   }
   @media only screen and (min-width: 900px) {
     grid-template-columns: 23vw 23vw 23vw;

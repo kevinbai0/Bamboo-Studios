@@ -126,8 +126,8 @@ export default function Footer() {
                 <theme.ResponsiveText as={CustomLink} to={"/contact"}>Contact</theme.ResponsiveText>
             </LinksContainer>
             <SocialContainer>
-                <Icon as={Img} fluid={data.facebook.childImageSharp.fluid} />
-                <Icon as={Img} fluid={data.instagram.childImageSharp.fluid} />
+                <theme.StyledExternalLink href="https://www.facebook.com/bamboostudiosdesign"><Icon as={Img} fluid={data.facebook.childImageSharp.fluid} /></theme.StyledExternalLink>
+                <theme.StyledExternalLink href="https://www.instagram.com/bamboo.studios"><Icon as={Img} fluid={data.instagram.childImageSharp.fluid} /></theme.StyledExternalLink>
             </SocialContainer>
             <ContactContainer>
                 <theme.ResponsiveText as={ContactLink} href={"tel:+18076334358"} baseSize={13}>+1 (807) 633-4358</theme.ResponsiveText>
