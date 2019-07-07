@@ -27,9 +27,10 @@ const MessageLabel = styled.div`
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  bottom: 20%;
+  bottom: 15%;
   line-height: 1.5;
   text-align: center;
+  width: 90%;
 `;
 
 const NotFoundPage = () => (

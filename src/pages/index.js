@@ -86,7 +86,7 @@ const IndexPage = () => {
       <ContactContainer>
         <ContactHeader>Let's Talk</ContactHeader>
         <MessengerButton />
-        <MessageLabel baseSize={22}>Send us a message!</MessageLabel>
+        <MessageLabel>Send us a message!</MessageLabel>
       </ContactContainer>
     </Layout>
   )

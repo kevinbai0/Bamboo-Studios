@@ -54,6 +54,7 @@ const ContactContainer = styled.div`
 const CustomLink = styled(theme.StyledLink)`
     color: ${theme.colors.lightColor};
     font-weight: 700;
+    margin: 2vw 0 0;
     @media only screen and (min-width: ${theme.mobileSwitchWidth}px) {
         margin: 0 3vw 0 0;
     }
@@ -129,8 +130,8 @@ export default function Footer() {
                 <Icon as={Img} fluid={data.instagram.childImageSharp.fluid} />
             </SocialContainer>
             <ContactContainer>
-                <theme.ResponsiveText as={ContactLink} href={"tel:+18076334358"} baseSize={16}>+1 (807) 633-4358</theme.ResponsiveText>
-                <theme.ResponsiveText as={ContactLink} href="mailto:kevinbai@bamboostudios.ca" baseSize={16}>kevinbai@bamboostudios.ca</theme.ResponsiveText>
+                <theme.ResponsiveText as={ContactLink} href={"tel:+18076334358"} baseSize={13}>+1 (807) 633-4358</theme.ResponsiveText>
+                <theme.ResponsiveText as={ContactLink} href="mailto:kevinbai@bamboostudios.ca" baseSize={13}>kevinbai@bamboostudios.ca</theme.ResponsiveText>
             </ContactContainer>
             <LogoTitleFixed isLight={true} custom={`
                 grid-column: 1/3;

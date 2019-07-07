@@ -18,7 +18,7 @@ export const LandingContainer = styled.div`
 `;
 export const TitleTagline = styled(Tagline)`
   margin: 3vw 0 0;
-  font-size: 7.5vw;
+  font-size: 24px;
   @media only screen and (min-width: 600px) {
     font-size: 6vw;
   }

@@ -6,11 +6,9 @@ export const AboutContainer = styled.div`
 export const AboutParagraph = styled.p`
     color: ${theme.colors.darkColor};
     width: 100%;
-    font-size: 18px;
     line-height: 1.33;
 
     @media only screen and (min-width: ${theme.mobileSwitchWidth}px) {
-        font-size: 24px;
         width: 60vw;
         max-width: 700px;
     }

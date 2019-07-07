@@ -40,7 +40,7 @@ export const Tagline = styled.h1`
 
 export const ResponsiveHeader = styled.h2`
     font-weight: 900;
-    font-size: ${props => props.percent ? props.percent * 6 : 6}vw;
+    font-size: ${props => props.percent ? props.percent * 24 : 24}px;
     @media only screen and (min-width: 450px) {
         font-size: ${props => props.percent ? props.percent * 5 : 5}vw;
     }
@@ -51,7 +51,7 @@ export const ResponsiveHeader = styled.h2`
 `;
 
 export const ResponsiveText = styled.span`
-    font-size: ${props => ((props.baseSize || 18) * 0.24)}vw;
+    font-size: ${props => (props.baseSize || 16)}px;
     @media only screen and (min-width: 450px) {
         font-size: ${props => ((props.baseSize || 18) * 0.18)}vw;
     }
@@ -67,5 +67,8 @@ export const ResponsiveText = styled.span`
 `;
 
 export const FluidText = styled.p`
+    font-size: 18px;
 
+    @media only screen and (min-width: ${mobileSwitchWidth}px) {
+        font-size: 24px;
 `;
