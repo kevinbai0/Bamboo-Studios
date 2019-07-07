@@ -22,7 +22,7 @@ const Nav = styled.nav`
   align-items: center;
   justify-items: space-evenly;
   box-shadow: 0 2px 18px 0 rgba(0,0,0,0);
-  background-color: ${props => props.condensednav ? theme.colors.tintColor : "transparent"};
+  background-color: ${props => props.condensednav ? theme.colors.darkTintColor : "transparent"};
   ${props => props.condensednav && `
     transform: translateY(-50%);
     box-shadow: 0 2px 18px 0 rgba(0,0,0,0.4);

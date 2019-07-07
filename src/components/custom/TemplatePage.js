@@ -22,7 +22,7 @@ const Title = styled.h1`
         top: 0;
         left: 2vw;
         position: absolute;
-        color: ${theme.colors.tintColor};
+        color: ${theme.colors.darkTintColor};
         font-weight: 900;
         font-size: 12vw;
         transform-origin: left bottom;

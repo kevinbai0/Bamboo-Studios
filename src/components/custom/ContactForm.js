@@ -42,7 +42,7 @@ const Input = styled.input`
     background-color: ${theme.colors.lightColor};
     border-radius: 1vw;
     box-shadow: 0 2px 18px 0 rgba(0,0,0,0.2);
-    color: ${theme.colors.tintColor};
+    color: ${theme.colors.darkTintColor};
     padding: 2vw 3vw;
     border: none;
     transition: all 0.2s ease;
@@ -63,7 +63,7 @@ const Input = styled.input`
 `;
 
 const SubmitButton = styled.button`
-    background-color: ${theme.colors.tintColor};
+    background-color: ${theme.colors.darkTintColor};
     color: ${theme.colors.lightColor};
     align-self: flex-start;
     justify-self: start;

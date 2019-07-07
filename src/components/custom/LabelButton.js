@@ -3,7 +3,7 @@ import styled from "styled-components";
 import * as theme from "../../utils/theme";
 
 const Container = styled.div`
-    background-color: ${theme.colors.tintColor};
+    background-color: ${theme.colors.darkTintColor};
     border-radius: 1vw;
     padding: 2.5vw;
     cursor: pointer;

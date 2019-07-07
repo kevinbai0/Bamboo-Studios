@@ -19,7 +19,7 @@ const NameField = styled.div`
     margin: 0.5vw 0;
 `;
 const RoleField = styled.div`
-    color: ${theme.colors.tintColor};
+    color: ${theme.colors.darkTintColor};
 `;
 
 export default function TeamMember({name, role, data, index}) {

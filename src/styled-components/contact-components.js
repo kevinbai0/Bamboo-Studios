@@ -75,6 +75,6 @@ export const ContactField = styled.div`
 
 export const ContactSymbol = styled.span`
     font-weight: 700;
-    color: ${theme.colors.tintColor};
+    color: ${theme.colors.darkTintColor};
     margin: 0 3vw 0 0;
 `;

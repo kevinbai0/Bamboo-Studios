@@ -11,7 +11,8 @@ export const mobileSwitchWidth = 750;
 export const colors = {
     lightColor: "#F2E3D4",
     darkColor: "#3B1D00",
-    tintColor: "#7B3C00"
+    lightTintColor: "#FFC389",
+    darkTintColor: "#7B3C00"
 }
 
 export const StyledLink = styled(Link)`

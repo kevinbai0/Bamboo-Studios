@@ -6,7 +6,7 @@ import { useStaticQuery, graphql } from "gatsby";
 import LogoTitleFixed from "./custom/logo-title-fixed";
 
 const Container = styled.footer`
-    background-color: ${theme.colors.tintColor};
+    background-color: ${theme.colors.darkTintColor};
     display: grid;
     grid-template-rows: auto auto auto;
     grid-template-columns: auto auto;

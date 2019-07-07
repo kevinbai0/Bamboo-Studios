@@ -28,7 +28,7 @@ export const TitleTagline = styled(Tagline)`
 `;
 export const Subline = styled.h3`
   font-weight: 400;
-  color: ${theme.colors.tintColor};
+  color: ${theme.colors.darkTintColor};
   line-height: 1.5;
   font-size: 6vw;
   @media only screen and (min-width: 450px) {
