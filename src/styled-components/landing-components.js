@@ -13,7 +13,7 @@ export const LandingContainer = styled.div`
     padding: 0 15vw 15vw;
   }
   @media only screen and (min-width: 1200px) {
-    padding: 0 8vw 10vw;
+    padding: 0 8vw 8vw;
   }
 `;
 export const TitleTagline = styled(Tagline)`
