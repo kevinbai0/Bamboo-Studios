@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import * as theme from "../../utils/theme";
-import { Link }  from "gatsby";
 import parseDate from "../../utils/dateParser";
+
+import Img from "gatsby-image";
 
 const Card = styled.div`
     background-color: white;
@@ -10,8 +11,9 @@ const Card = styled.div`
     height: 100%;
     border-radius: 10px;
 
-    display: flex;
-    flex-direction: column-reverse;
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: 100%;
     justify-content: stretch;
     overflow: hidden;
     color: ${theme.colors.lightColor};
@@ -55,18 +57,21 @@ const AuthorLabel = styled.span`
     }
 `;
 
-export default function BlogCard({title,date,author,link}) {
+export default function BlogCard({title,date,author,image,link}) {
     return (
         <theme.StyledLink to={link}>
             <Card>
+                <ImageLayer>
+                    {
+                        image &&
+                            <Img fluid={image} />
+                    }
+                </ImageLayer>
                 <InfoLayer>
                     <Title>{title}</Title>
                     <DateLabel>{parseDate(date)}</DateLabel>
                     <AuthorLabel>By {author}</AuthorLabel>
                 </InfoLayer>
-                <ImageLayer>
-
-                </ImageLayer>
             </Card>
         </theme.StyledLink>
     )

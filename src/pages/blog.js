@@ -49,7 +49,13 @@ const BlogPage = ({data}) => {
         <BlogContainer>
           {
             posts.map(({node: post}) => 
-              <BlogCard title={post.frontmatter.title} date={post.frontmatter.date} path={post.frontmatter.path} link={post.frontmatter.path} author={post.frontmatter.author} />
+              <BlogCard
+                title={post.frontmatter.title}
+                date={post.frontmatter.date}
+                path={post.frontmatter.path}
+                image={post.frontmatter.mainImage.childImageSharp.fluid}
+                link={post.frontmatter.path} author={post.frontmatter.author}
+              />
             )
           }
         </BlogContainer>
@@ -70,6 +76,13 @@ export const pageQuery = graphql`
             date
             path
             author
+            mainImage {
+              childImageSharp {
+                fluid(quality: 100, maxWidth: 900) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
         }
       }

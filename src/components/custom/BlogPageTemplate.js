@@ -87,7 +87,18 @@ const AuthorImage = styled(Img)`
     }
 `;
 
+const CoverImage = styled(Img)`
+    margin: 0 -5vw 30px;
+
+    @media only screen and (min-width: ${theme.mobileSwitchWidth}px) {
+        margin: 0 0 30px;
+        width: 100%;
+    }
+
+`;
+
 export default function BlogPageTemplate({ data: {mdx} }) {
+    console.log(mdx);
     const date = parseDate(mdx.frontmatter.date);
     return (
         <Layout>
@@ -103,9 +114,13 @@ export default function BlogPageTemplate({ data: {mdx} }) {
                     <DateHeader>{date}</DateHeader>
                     <LabelRow>
                         <HeaderLabel>By {mdx.frontmatter.author}</HeaderLabel>
-                        <HeaderLabel>{Math.round(mdx.body.split(" ").length / 225)} min read</HeaderLabel>
+                        <HeaderLabel>{Math.round(mdx.body.split(" ").length / 250)} min read</HeaderLabel>
                     </LabelRow>
                 </Header>
+                {
+                    mdx.frontmatter.mainImage && 
+                        <CoverImage fluid={mdx.frontmatter.mainImage.childImageSharp.fluid} />
+                }
                 <MDXProvider
                     components={{
                         // Or define component inline
@@ -143,6 +158,13 @@ export const pageQuery = graphql`
                     fluid(quality: 100, maxWidth: 500, maxHeight: 500) {
                         ...GatsbyImageSharpFluid
                     }
+                }
+            }
+            mainImage {
+                childImageSharp {
+                  fluid(quality: 100, maxWidth: 500) {
+                    ...GatsbyImageSharpFluid
+                  }
                 }
             }
         }
