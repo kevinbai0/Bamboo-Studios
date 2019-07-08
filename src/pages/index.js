@@ -88,6 +88,10 @@ const IndexPage = () => {
         <MessengerButton />
         <MessageLabel>Send us a message!</MessageLabel>
       </ContactContainer>
+      <div 
+        className="fb-customerchat"
+        page_id="626503081171145"
+        greeting_dialog_display="show" />
     </Layout>
   )
 }
