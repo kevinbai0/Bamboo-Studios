@@ -98,7 +98,6 @@ const CoverImage = styled(Img)`
 `;
 
 export default function BlogPageTemplate({ data: {mdx} }) {
-    console.log(mdx);
     const date = parseDate(mdx.frontmatter.date);
     return (
         <Layout>
