@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import * as theme from "../../utils/theme";
 import { Link }  from "gatsby";
+import parseDate from "../../utils/dateParser";
 
 const Card = styled.div`
     background-color: white;
@@ -17,6 +18,8 @@ const Card = styled.div`
 `;
 
 const InfoLayer = styled.div`
+    display: flex;
+    flex-direction: column;
     background-color: ${theme.colors.darkTintColor};
     padding: 20px;
 `;
@@ -44,21 +47,22 @@ const DateLabel = styled.h3`
     }
 `;
 
-const TimeLabel = styled.span`
+const AuthorLabel = styled.span`
     font-size: 14px;
+    align-self: flex-end;
     @media only screen and (min-width: ${theme.mobileSwitchWidth}px) {
         font-size: 16px;
     }
 `;
 
-export default function BlogCard({title,date,readTime,link}) {
+export default function BlogCard({title,date,author,link}) {
     return (
         <theme.StyledLink to={link}>
             <Card>
                 <InfoLayer>
                     <Title>{title}</Title>
                     <DateLabel>{parseDate(date)}</DateLabel>
-                    <span>{readTime} min read</span>
+                    <AuthorLabel>By {author}</AuthorLabel>
                 </InfoLayer>
                 <ImageLayer>
 
@@ -66,12 +70,4 @@ export default function BlogCard({title,date,readTime,link}) {
             </Card>
         </theme.StyledLink>
     )
-}
-
-const months = [
-    "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-]
-
-function parseDate(date) {
-    return months[date.getMonth()] + " " + date.getDate() + ", " + date.getFullYear(); 
 }

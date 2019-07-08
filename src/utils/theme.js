@@ -72,5 +72,16 @@ export const FluidText = styled.p`
     font-size: 18px;
 
     @media only screen and (min-width: ${mobileSwitchWidth}px) {
-        font-size: 24px;
+        font-size: 22px;
+    }
+`;
+
+export const FluidHeader = styled.h1`
+    font-size: 28px;
+    font-weight: 900;
+    margin: 0;
+
+    @media only screen and (min-width: ${mobileSwitchWidth}px) {
+        font-size: 36px;
+    }
 `;

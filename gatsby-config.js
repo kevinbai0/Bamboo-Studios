@@ -6,13 +6,6 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
-      },
-    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -49,6 +42,44 @@ module.exports = {
         // Any additional create only fields (optional)
         sampleRate: 5,
         siteSpeedSampleRate: 10
+      },
+    },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 1035,
+              sizeByPixelDensity: true,
+            },
+          },
+        ],
+      },
+    },
+    // for any website pictures or team members
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images`,
+      },
+    },
+    // for any blog post
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "posts",
+        path: `${__dirname}/content/posts/`,
+      },
+    },
+    // people for team member pictures
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "people",
+        path: `${__dirname}/people/`,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

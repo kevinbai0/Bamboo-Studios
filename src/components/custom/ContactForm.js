@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import * as theme from "../../utils/theme";
-import DefaultButton from "../default-button";
+import validator from "validator";
 
 const Form = styled.form`
     display: flex;
@@ -44,7 +44,7 @@ const Input = styled.input`
     box-shadow: 0 2px 18px 0 rgba(0,0,0,0.2);
     color: ${theme.colors.darkTintColor};
     padding: 2vw 3vw;
-    border: none;
+    border: 1px solid ${theme.colors.lightTintColor};
     transition: all 0.2s ease;
     width: 100%;
     &:focus {
@@ -53,6 +53,7 @@ const Input = styled.input`
     }
 
     @media only screen and (min-width: ${theme.mobileSwitchWidth}px) {
+        border: none;
         padding: 1vw 1.5vw;
     }
     @media only screen and (min-width: 900px) {
@@ -85,17 +86,64 @@ const SubmitButton = styled.button`
     }
 `;
 
+const ErrorField = styled.span`
+    color: ${theme.colors.darkTintColor};
+    font-size: 12px;
+`;
 
 export default function ContactForm({customStyle}) {
+    const [ errors, setErrors ] = useState({name: "", email: "", message: ""});
+    const [ submitState, setSubmitState ] = useState("Nothing");
+    const [ nameField, setNameField ] = useState("");
+    const [ emailField, setEmailField ] = useState("");
+    const [ messageField, setMessageField ] = useState("");
+
+    function handleClick(e) {
+        e.preventDefault();
+        let newErrors = {};
+        if (nameField.length === 0) {
+            newErrors.name = "Can't be blank";
+        }
+        if (emailField.length === 0) {
+            newErrors.email = "Can't be blank";
+        }
+        else if (!validator.isEmail(emailField)) {
+            newErrors.email = "Invalid email";
+        }
+        if (messageField.length === 0) {
+            newErrors.message = "Can't be blank";
+        }
+        if (newErrors.name || newErrors.email || newErrors.message) {
+            setErrors(newErrors);
+            return;
+        }
+        setErrors({name: "", email: "", message: ""})
+        fetch("https://www.kevinbai.design/api/email", {
+            method: "POST",
+            body: JSON.stringify({
+                name: nameField,
+                email: emailField,
+                subject: "Bamboo Studios",
+                message: messageField
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then((res) => {
+            if (res.status == 200) {
+                alert("Okay");
+            }
+        });
+    }
     return (
         <Form customStyle={customStyle}>
-            <Label gridArea="name-label">Name</Label>
-            <Input type="text" placeholder="Name" gridArea="name-input"/>
-            <Label gridArea="email-label">Email</Label>
-            <Input type="text" placeholder="Email" gridArea="email-input"/>
-            <Label gridArea="message-label">Message</Label>
-            <Input as="textarea" placeholder="Message" rows={5} gridArea={`message-input`} />
-            <SubmitButton gridArea="submit">Send</SubmitButton>
+            <Label gridArea="name-label">Name <ErrorField>{errors.name && `* ${errors.name}`}</ErrorField></Label>
+            <Input type="text" placeholder="Name" gridArea="name-input" value={nameField} onChange={(e) => setNameField(e.target.value)}/>
+            <Label gridArea="email-label">Email <ErrorField>{errors.email && `* ${errors.email}`}</ErrorField></Label>
+            <Input type="text" placeholder="Email" gridArea="email-input" value={emailField} onChange={(e) => setEmailField(e.target.value)}/>
+            <Label gridArea="message-label">Message <ErrorField>{errors.message && `* ${errors.message}`}</ErrorField></Label>
+            <Input as="textarea" placeholder="Message" rows={5} gridArea={`message-input`} value={messageField} onChange={(e) => setMessageField(e.target.value)}/>
+            <SubmitButton gridArea="submit" onClick={handleClick}>Send</SubmitButton>
         </Form>
     )
 }

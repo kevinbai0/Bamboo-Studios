@@ -38,19 +38,43 @@ const BlogContainer = styled.div`
   }
 `;
 
-const SecondPage = () => (
-  <Layout>
-    <SEO title="Blog" />
-    <TemplatePage title="Blog">
-      <TemplateHeader as={theme.ResponsiveHeader}>Stories</TemplateHeader>
-      <BlogContainer>
-        <BlogCard title={"Fun in the park"} date={new Date()} readTime={4} link="/blog/fun-in-the-park" />
-        <BlogCard title={"Fun in the park"} date={new Date()} readTime={4} link="/blog/fun-in-the-park" />
-        <BlogCard title={"Fun in the park"} date={new Date()} readTime={4} link="/blog/fun-in-the-park" />
-        <BlogCard title={"Fun in the park"} date={new Date()} readTime={4} link="/blog/fun-in-the-park" />
-      </BlogContainer>
-    </TemplatePage>
-  </Layout>
-)
+const BlogPage = ({data}) => {
+  const { edges: posts } = data.allMdx;
 
-export default SecondPage
+  return (
+    <Layout>
+      <SEO title="Blog" />
+      <TemplatePage title="Blog">
+        <TemplateHeader as={theme.ResponsiveHeader}>Stories</TemplateHeader>
+        <BlogContainer>
+          {
+            posts.map(({node: post}) => 
+              <BlogCard title={post.frontmatter.title} date={post.frontmatter.date} path={post.frontmatter.path} link={post.frontmatter.path} author={post.frontmatter.author} />
+            )
+          }
+        </BlogContainer>
+      </TemplatePage>
+    </Layout>
+  );
+}
+
+export const pageQuery = graphql`
+  query blogIndex {
+    allMdx {
+      edges {
+        node {
+          id
+          excerpt
+          frontmatter {
+            title
+            date
+            path
+            author
+          }
+        }
+      }
+    }
+  }
+`
+
+export default BlogPage

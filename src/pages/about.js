@@ -7,15 +7,9 @@ import * as theme from "../utils/theme";
 import TeamMember from "../components/custom/TeamMember";
 import { useStaticQuery, graphql } from "gatsby";
 
-export default function AboutPage() {
-    const data = useStaticQuery(graphql`
-        query {
-            KevinBai: file(relativePath: { eq: "kevin-bai.png" }) {
-                ...TeamImage
-            }
-        }
-    `);
-
+export default function AboutPage({data}) {
+    const images = data.allFile.edges;
+    console.log(images);
     return (
         <Layout>
             <SEO title="About" />
@@ -33,7 +27,10 @@ export default function AboutPage() {
                 <theme.ResponsiveHeader as={TemplateHeader}>The Team</theme.ResponsiveHeader>
                 <TeamMembers>
                     {
-                        Object.keys(people).map((key, index) => <TeamMember index={index} name={people[key].name} role={people[key].role} data={data[key]} />)
+                        images.filter(({node: person}) => people[person.name])
+                            .map(({node: person}, index) => 
+                                <TeamMember index={index} name={people[person.name].name} role={people[person.name].role} data={person} />
+                            )
                     }
                 </TeamMembers>
             </TemplatePage>
@@ -42,7 +39,7 @@ export default function AboutPage() {
 }
 
 // get image queries
-export const TeamImage = graphql`
+/*export const TeamImage = graphql`
     fragment TeamImage on File {
         childImageSharp {
             fluid(maxWidth: 1000, maxHeight: 1000, quality: 100) {
@@ -52,11 +49,37 @@ export const TeamImage = graphql`
         }
     }
 `;
+*/
+export const query = graphql`
+    query {
+        allFile(filter: { sourceInstanceName: { eq: "people" } }) {
+            edges {
+                node {
+                    name
+                    childImageSharp {
+                        fluid(maxWidth: 1000, maxHeight: 1000, quality: 100) {
+                            ...GatsbyImageSharpFluid
+                        }
+                        
+                    }
+                }
+            }
+        }
+    }
+`;
+
+/*
+each with this template: 
+kevinbai: file(relativePath: { eq: "kevin-bai.png" }) {
+    ...TeamImage
+}
+*/
 
 // get team images
 export const people = {
-    "KevinBai": {
+    "Kevin Bai": {
         name: "Kevin Bai",
+        imagePath: "kevin-bai.png",
         role: "Founder/Creative Director",
     }
 }
