@@ -74,6 +74,7 @@ const SubmitButton = styled.button`
     box-shadow: 0 2px 18px 0 rgba(0,0,0,0.2);
     transition: all 0.2s ease;
     cursor: pointer;
+    
     &:hover {
         transform: scale(1.05);
     }
@@ -84,6 +85,14 @@ const SubmitButton = styled.button`
         padding: 0.5vw 2.5vw;
         margin: 2vw 0 0;
     }
+
+    ${props => props.disabled && `
+        box-shadow: 0 2px 6px 0 rgba(0,0,0,0.2);
+        background-color: #888888;
+        &:hover {
+            transform: none;
+        }
+    `}
 `;
 
 const ErrorField = styled.span`
@@ -117,7 +126,8 @@ export default function ContactForm({customStyle}) {
             setErrors(newErrors);
             return;
         }
-        setErrors({name: "", email: "", message: ""})
+        setErrors({name: "", email: "", message: ""});
+        setSubmitState("Sending");
         fetch("https://www.kevinbai.design/api/email", {
             method: "POST",
             body: JSON.stringify({
@@ -131,9 +141,10 @@ export default function ContactForm({customStyle}) {
             }
         }).then((res) => {
             if (res.status == 200) {
-                alert("Okay");
+                setSubmitState("Sent");
             }
-        });
+            else setSubmitState("Failed");
+        }).catch(reason => setSubmitState("Failed"));
     }
     return (
         <Form customStyle={customStyle}>
@@ -143,7 +154,7 @@ export default function ContactForm({customStyle}) {
             <Input type="text" placeholder="Email" gridArea="email-input" value={emailField} onChange={(e) => setEmailField(e.target.value)}/>
             <Label gridArea="message-label">Message <ErrorField>{errors.message && `* ${errors.message}`}</ErrorField></Label>
             <Input as="textarea" placeholder="Message" rows={5} gridArea={`message-input`} value={messageField} onChange={(e) => setMessageField(e.target.value)}/>
-            <SubmitButton gridArea="submit" onClick={handleClick}>Send</SubmitButton>
+            <SubmitButton gridArea="submit" onClick={handleClick} disabled={submitState !== "Nothing"}>{submitState === "Sent" ? "Sent" : submitState === "Failed" ? "Failed" : submitState === "Sending" ? "Sending" : "Send"}</SubmitButton>
         </Form>
     )
 }
