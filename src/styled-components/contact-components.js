@@ -78,3 +78,15 @@ export const ContactSymbol = styled.span`
     color: ${theme.colors.darkTintColor};
     margin: 0 3vw 0 0;
 `;
+
+export const Map = styled.div`
+    height: 60vw;
+    margin: 5vw -5vw -10vw;
+    @media only screen and (min-width: ${theme.mobileSwitchWidth}px) {
+        width: 100%;
+        height: inherit;
+        grid-column: 2/3;
+        margin: 5vw 0 0;
+        border-radius: 5px;
+    }
+`;

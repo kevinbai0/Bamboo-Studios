@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { Tagline } from "../utils/theme";
 import * as theme from "../utils/theme";
-import DefaultButton from "../components/default-button";
 
 export const LandingContainer = styled.div`
   height: 100vh;

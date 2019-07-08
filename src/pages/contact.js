@@ -1,4 +1,6 @@
-import React from "react";
+/*global google*/
+
+import React, { useEffect } from "react";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import TemplatePage, { TemplateHeader, TemplateSubheader } from "../components/custom/TemplatePage";
@@ -6,7 +8,26 @@ import * as theme from "../utils/theme";
 import MessengerButton from "../components/custom/MessengerButton";
 import ContactForm from "../components/custom/ContactForm";
 import { useStaticQuery, graphql } from "gatsby";
-import { ContactContainerStyle, LocationImage, FindUsSection, AddressField, ContactField, ContactSymbol, ContactFormStyle } from "../styled-components/contact-components";
+import { ContactContainerStyle, LocationImage, FindUsSection, AddressField, ContactField, ContactSymbol, ContactFormStyle, Map } from "../styled-components/contact-components";
+
+const loadGoogleMaps = () => {
+      // Load the SDK asynchronously
+    window.initMap = () => {
+        const location = { lat: 48.4203082, lng: -89.2605163 };
+        const map = new google.maps.Map(document.getElementById('map'), {
+            center: location,
+            zoom: 13
+        });
+        new google.maps.Marker({position: location, map: map});
+    }
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyA4asoWB_TboTAnOu2soncLr6mQWinr7UQ&callback=initMap";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'googlemaps'));
+}
 
 export default function ContactPage() {
     const data = useStaticQuery(graphql`
@@ -20,6 +41,9 @@ export default function ContactPage() {
             }
         }
     `);
+    
+    useEffect(() => loadGoogleMaps(), []);
+
     return (
         <Layout>
             <SEO title="Contact" />
@@ -47,6 +71,7 @@ export default function ContactPage() {
                         </div>
                     </theme.ResponsiveText>
                 </FindUsSection>
+                <Map id="map" />
             </TemplatePage>
         </Layout>
     );
