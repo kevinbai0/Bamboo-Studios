@@ -12,11 +12,11 @@ export default function AboutPage({data}) {
     console.log(images);
     return (
         <Layout>
-            <SEO title="About" />
+            <SEO title="About" description={"We are a digital design agency focused on helping your business grow. We strive to give your business a competitive edge in the digital world."}/>
             <TemplatePage title="About">
                 <theme.ResponsiveHeader as={TemplateHeader}>Who we are</theme.ResponsiveHeader>
                 <theme.FluidText as={AboutParagraph}>
-                    Bamboo Studios is a design & development agency focused on creating lasting digital experiences in the form of websites and mobile apps. We aim to provide businesses with the best services to help them thrive in today’s digital world.
+                    Bamboo Studios is a digital design agency focused on creating lasting digital experiences in the form of websites and mobile apps. We aim to provide businesses with the best services to help them thrive in today’s digital world.
                 </theme.FluidText>
                 <theme.FluidText as={AboutParagraph}>
                     At Bamboo Studios, we like to focus on the big picture. We don’t just create apps and websites. We create impactful and memorable experiences for your customers.

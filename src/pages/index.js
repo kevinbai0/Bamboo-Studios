@@ -58,7 +58,7 @@ const IndexPage = () => {
   }, [])
   return (
     <Layout>
-      <SEO title="Home" description={"We are a digital design agency located in Thunder Bay, ON who focuses on helping your business grow. We strive to give your business a competitive edge in the digital world."}/>
+      <SEO title="Home" description={"We are a digital design agency located in Thunder Bay, ON focused on helping your business grow. We strive to give your business a competitive edge in the digital world."}/>
       <LandingContainer>
         <LogoTitle />
         <TitleTagline>We build experiences that last.</TitleTagline>

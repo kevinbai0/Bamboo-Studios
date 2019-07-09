@@ -1,8 +1,9 @@
 module.exports = {
   siteMetadata: {
     title: `Bamboo Studios`,
-    description: `We create digital experiences that last. `,
-    author: `@kevinbai0`,
+    description: `We are a digital design agency focused on helping your business grow. We strive to help your business gain an advantage in the digital world. `,
+    author: `Kevin Bai`,
+    siteUrl: `https://www.bamboostudios.ca`
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -82,6 +83,7 @@ module.exports = {
         path: `${__dirname}/people/`,
       },
     },
+    `gatsby-plugin-sitemap`
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

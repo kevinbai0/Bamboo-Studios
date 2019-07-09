@@ -46,7 +46,7 @@ const BlogPage = ({data}) => {
 
   return (
     <Layout>
-      <SEO title="Blog" />
+      <SEO title="Blog" description="Our blog, written by team members of Bamboo Studios, where we bring you content about design & development." />
       <TemplatePage title="Blog">
         <TemplateHeader as={theme.ResponsiveHeader}>Stories</TemplateHeader>
         <BlogContainer>
