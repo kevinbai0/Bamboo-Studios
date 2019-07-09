@@ -46,7 +46,7 @@ export default function ContactPage() {
 
     return (
         <Layout>
-            <SEO title="Contact" />
+            <SEO title="Contact" description="Let's talk! Send us a message on Facebook or shoot us an email. Let's make something awesome together!"/>
             <TemplatePage title="Contact" containerStyle={ContactContainerStyle}>
                 <theme.ResponsiveHeader as={TemplateHeader} customStyle={`padding: 0 0 1vw; margin: auto auto 0`}>Message Us</theme.ResponsiveHeader>
                 <MessengerButton customStyle={`display: inline-flex; margin: 0 0 4vw`}/>
