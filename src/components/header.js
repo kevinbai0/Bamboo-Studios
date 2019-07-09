@@ -6,7 +6,7 @@ import { useStaticQuery, graphql, Link } from "gatsby"
 
 import * as theme from "../utils/theme";
 
-const condenseValue = 50;
+const condenseValue = 5;
 
 const Nav = styled.nav`
   z-index: 10;

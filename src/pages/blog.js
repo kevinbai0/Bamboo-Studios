@@ -11,30 +11,33 @@ import BlogCard from "../components/custom/BlogCard";
 const BlogContainer = styled.div`
   display: grid;
   grid-template-columns: 100%;
-  grid-auto-rows: 70vw;
+  grid-auto-rows: 75vw;
   grid-gap: 5vw;
   margin: 5vw 0 0;
-  @media only screen and (min-width: ${theme.mobileSwitchWidth}px) {
-    grid-template-columns: 35vw 35vw;
-    grid-auto-rows: 35vw;
+  @media only screen and (min-width: 450px) {
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 40vw;
     grid-gap: 2vw;
     margin: 0;
   }
-  @media only screen and (min-width: 900px) {
-    grid-template-columns: 23vw 23vw 23vw;
-    grid-auto-columns: 23vw;
-    grid-auto-rows: 23vw;
+  @media only screen and (min-width: ${theme.mobileSwitchWidth}px) {
+    margin: 0 5vw 0 0;
+    grid-auto-rows: 35vw;
+  }
+  @media only screen and (min-width: 1000px) {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-rows: 25vw;
   }
   @media only screen and (min-width: 1200px) {
     grid-template-columns: 300px 300px 300px;
     grid-auto-columns: 300px;
-    grid-auto-rows: 300px;
+    grid-auto-rows: auto;
     grid-gap: 20px;
   }
   @media only screen and (min-width: 1600px) {
     grid-template-columns: 400px 400px 400px;
     grid-auto-columns: 400px;
-    grid-auto-rows: 400px;
+    grid-auto-rows: auto;
   }
 `;
 
