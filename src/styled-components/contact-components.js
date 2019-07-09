@@ -77,6 +77,9 @@ export const ContactSymbol = styled.span`
     font-weight: 700;
     color: ${theme.colors.darkTintColor};
     margin: 0 3vw 0 0;
+    @media only screen and (min-width: ${theme.mobileSwitchWidth}px) {
+        margin: 0 1vw 0 0;
+    }
 `;
 
 export const Map = styled.div`
